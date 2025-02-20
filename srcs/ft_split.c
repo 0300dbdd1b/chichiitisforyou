@@ -13,6 +13,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/* NOTE(chichi): 110 lines ?! .. BRUH XDDDDDDD */
+
 int	is_in_charset(char c, char *charset)
 {
 	int	i;
@@ -59,6 +61,7 @@ int	get_word(char **dest, char *str, char *charset)
 		i++;
 	while (str[src_len + i] && !is_in_charset(str[src_len + i], charset))
 		src_len++;
+	/* NOTE(chichi): Is this C++ ? */
 	*dest = (char *)malloc(sizeof(char) * (src_len + 1));
 	if (!*dest)
 		return (0);
@@ -84,12 +87,18 @@ char	**ft_split(char *str, char *charset)
 	i = 0;
 	offset = 0;
 	word_count = count_words(str, charset);
+	/* NOTE(chichi): Is this C++ ? */
 	tab = (char **)malloc(sizeof(char *) * (word_count + 1));
 	while (i < word_count)
 	{
 		offset += get_word(&tab[i], str + offset, charset);
 		i++;
 	}
+	/*
+	 * NOTE(chichi): 
+	 * 	The fuck are you doing ??
+	 * 	(char*)0 ???????????????
+	 */
 	tab[i] = (char *)0;
 	return (tab);
 }
@@ -98,6 +107,9 @@ void	free_split(char **tab)
 {
 	unsigned int	i;
 
+	/* NOTE(chichi): 
+	 *	Bro writes `= NULL` for no reason
+	 */
 	i = 0;
 	while (tab[i])
 	{

@@ -6,7 +6,14 @@
 void	ft_exit(char *error)
 {
 	ft_putstr(error);
+	/* 
+	 * NOTE(chichi):
+	 * 	`exit(0)` means no error by convention...
+	 */
+#if 0
 	exit(0);
+#endif
+	exit(1);
 }
 
 void	*ft_malloc(unsigned int size)

@@ -11,6 +11,7 @@ int	check_map_params(t_map *map)
 
 void	print_map_params(t_map *map)
 {
+	/* NOTE(chichi): Damn.. you really live like this? */
 	ft_putstr("(empty character) = ");
 	write(1, &map->empty_char, 1);
 	ft_putstr("\n(obstacle character) = ");
@@ -26,6 +27,8 @@ void	print_map_params(t_map *map)
 
 // FIXME: Must check each allocation and free the allocated parts if malloc fails.
 // Might use an allocator
+
+/* NOTE(chichi): no reason for this lmao*/
 
 int	map_allocator(int fd, t_map *map)
 {
@@ -72,4 +75,7 @@ int main(int argc, char **argv)
 			i++;
 		}
 	}
+	/* 
+	 * NOTE(chichi): you don't return anything ?
+	 */
 }

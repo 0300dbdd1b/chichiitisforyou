@@ -1,10 +1,29 @@
 #include "bsq.h"
 
+void	*ft_memset (void *dest, int val, size_t len)
+{
+  unsigned char *ptr = (unsigned char*)dest;
+  while (len > 0)
+  {
+	  *ptr++ = val;
+	  len--;
+  }
+  return dest;
+}
+
 t_map *create_map(void)
 {
+#if 0
 	t_map *map;
-
+	/*
+	 * NOTE(chichi): 
+	 *	Not checking NULL now?
+	 */ 
 	map = malloc(sizeof(t_map) * 1);
+	/* 
+	 * NOTE(chichi):
+	 * 	Just memset bro.. It's ok.
+	 */
 	map->empty_char = 0;
 	map->obstacle_char = 0;
 	map->full_char = 0;
@@ -13,6 +32,11 @@ t_map *create_map(void)
 	map->raw_map = 0;
 	map->first_line_length = 0;
 	return (map);
+#endif
+	/*
+	 * NOTE(chichi): stupid oneliner xd
+	 */
+	return ft_memset(malloc(sizeof(t_map)), 0, sizeof(t_map));
 }
 
 void	get_map_params_from_first_line(t_map *map)

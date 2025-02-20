@@ -1,3 +1,6 @@
+## NOTE(chichi): 
+##	Since this makefile relinks, the project is failed..
+##	Wrong way of dealing with dependency. 
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
 DEBUGFLAGS = -g3 -fsanitize=address
