@@ -1,6 +1,6 @@
 #include "bsq.h"
 
-void	*ft_memset (void *dst, int val, size_t len)
+void	*ft_memset (void *dest, int val, size_t len)
 {
   unsigned char *ptr = (unsigned char*)dest;
   while (len > 0)
