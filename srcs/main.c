@@ -67,6 +67,10 @@ int main(int argc, char **argv)
 			ft_putstr(map->raw_map);
 			solution = ft_bsq(map);
 			printf("Solution => x :%d, y :%d -- size : %d\n", solution.pos.x, solution.pos.y, solution.size);
+			
+			fill_square(map, solution);
+			map->raw_map = ft_strjoin(map->height, map->map, "\n");
+			ft_putstr(map->raw_map);
 			free_split(map->map);
 			free(map);
 			i++;

@@ -3,7 +3,7 @@
 t_map *create_map(void)
 {
 	t_map *map;
-
+	// NOTE: Should use memset instead
 	map = malloc(sizeof(t_map) * 1);
 	map->empty_char = 0;
 	map->obstacle_char = 0;

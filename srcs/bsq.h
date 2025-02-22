@@ -33,11 +33,12 @@ typedef struct s_map
 	char			**map;
 	unsigned int	first_line_length;
 	unsigned char	is_valid;
+	t_solution		solution;
 } t_map;
 
 
 
-t_map *get_map(char *filepath);
+t_map	*get_map(char *filepath);
 t_map	*create_map(void);
 char	*get_raw_file(char *filepath);
 void	free_map(t_map *map);
@@ -46,9 +47,11 @@ void	ft_putstr(char *str);
 void	ft_putnbr(int nb);
 void	*ft_malloc(unsigned int size);
 
-unsigned int ft_strlen(char *str);
-char	**ft_split(char *str, char *charset);
-void	free_split(char **tab);
-t_solution ft_bsq(t_map *map);
+unsigned int	ft_strlen(char *str);
+char			**ft_split(char *str, char *charset);
+void			free_split(char **tab);
+t_solution		ft_bsq(t_map *map);
+void			fill_square(t_map *map, t_solution solution);
+char			*ft_strjoin(int size, char **strs, char *sep);
 
 #endif

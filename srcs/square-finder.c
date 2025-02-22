@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   square-finder.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: noaddino <noaddino@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/22 18:18:46 by noaddino          #+#    #+#             */
+/*   Updated: 2025/02/22 18:26:29 by noaddino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "bsq.h"
 
 int	check_empty(t_map *map, t_pos start, t_pos end)
@@ -5,11 +17,11 @@ int	check_empty(t_map *map, t_pos start, t_pos end)
 	unsigned int	row;
 	unsigned int	col;
 
-	col = start.y;
-	row = start.x;
-	while (row <= end.x)
+	row = start.y;
+	while (row <= end.y)
 	{
-		while (col <= end.y)
+		col = start.x;
+		while (col <= end.x)
 		{
 			if (map->map[row][col] != map->empty_char)
 				return (0);
@@ -29,8 +41,6 @@ t_solution find_biggest_square(t_map *map, t_pos coord)
 	stop.x = coord.x + 1;
 	solution.size = 1;
 	solution.pos = coord;
-	if (map->map[coord.y][coord.x] != map->empty_char)
-		return (solution); // FIXME: CANT DO THAT ISSOU
 	while (stop.x <= map->width && stop.y <= map->height)
 	{
 		if (!check_empty(map, coord, stop))
@@ -41,7 +51,6 @@ t_solution find_biggest_square(t_map *map, t_pos coord)
 	}
 	return (solution);
 }
-
 
 t_solution ft_bsq(t_map *map)
 {
@@ -66,5 +75,29 @@ t_solution ft_bsq(t_map *map)
 		}
 		pos.y++;
 	}
+	map->solution = solution;
 	return (solution);
+}
+
+void fill_square(t_map *map, t_solution solution)
+{
+    unsigned int row;
+    unsigned int col;
+    unsigned int end_x;
+    unsigned int end_y;
+
+    end_x = solution.pos.x + solution.size - 1;
+    end_y = solution.pos.y + solution.size - 1;
+
+    row = solution.pos.y;
+    while (row <= end_y)
+    {
+        col = solution.pos.x;
+        while (col <= end_x)
+        {
+            map->map[row][col] = map->full_char;
+            col++;
+        }
+        row++;
+    }
 }
