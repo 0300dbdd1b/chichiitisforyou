@@ -6,7 +6,7 @@
 /*   By: noaddino <noaddino@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:18:46 by noaddino          #+#    #+#             */
-/*   Updated: 2025/02/22 18:26:29 by noaddino         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:59:45 by noaddino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	check_empty(t_map *map, t_pos start, t_pos end)
 	return (1);
 }
 
-t_solution find_biggest_square(t_map *map, t_pos coord)
+t_solution	find_biggest_square(t_map *map, t_pos coord)
 {
-	t_pos	stop;
-	t_solution solution;
+	t_pos		stop;
+	t_solution	solution;
 
 	stop.y = coord.y + 1;
 	stop.x = coord.x + 1;
@@ -52,7 +52,7 @@ t_solution find_biggest_square(t_map *map, t_pos coord)
 	return (solution);
 }
 
-t_solution ft_bsq(t_map *map)
+t_solution	ft_find_solution(t_map *map)
 {
 	t_solution	solution;
 	t_solution	tmp_solution;
@@ -79,25 +79,24 @@ t_solution ft_bsq(t_map *map)
 	return (solution);
 }
 
-void fill_square(t_map *map, t_solution solution)
+void	fill_square(t_map *map, t_solution solution)
 {
-    unsigned int row;
-    unsigned int col;
-    unsigned int end_x;
-    unsigned int end_y;
+	unsigned int	row;
+	unsigned int	col;
+	unsigned int	end_x;
+	unsigned int	end_y;
 
-    end_x = solution.pos.x + solution.size - 1;
-    end_y = solution.pos.y + solution.size - 1;
-
-    row = solution.pos.y;
-    while (row <= end_y)
-    {
-        col = solution.pos.x;
-        while (col <= end_x)
-        {
-            map->map[row][col] = map->full_char;
-            col++;
-        }
-        row++;
-    }
+	end_x = solution.pos.x + solution.size - 1;
+	end_y = solution.pos.y + solution.size - 1;
+	row = solution.pos.y;
+	while (row <= end_y)
+	{
+		col = solution.pos.x;
+		while (col <= end_x)
+		{
+			map->map[row][col] = map->full_char;
+			col++;
+		}
+		row++;
+	}
 }

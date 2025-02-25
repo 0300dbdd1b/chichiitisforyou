@@ -85,26 +85,16 @@ char	**ft_split(char *str, char *charset)
 	offset = 0;
 	word_count = count_words(str, charset);
 	tab = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!tab)
+		return (NULL);
 	while (i < word_count)
 	{
-		offset += get_word(&tab[i], str + offset, charset);
+		offset = get_word(&tab[i], str, charset);
+		if (!offset)
+			tab[i] = NULL;
+		str += offset;
 		i++;
 	}
 	tab[i] = (char *)0;
 	return (tab);
-}
-
-void	free_split(char **tab)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		tab[i] = NULL;
-		i++;
-	}
-	free(tab);
-	tab = NULL;
 }

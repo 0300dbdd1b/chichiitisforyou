@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print-utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: noaddino <noaddino@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/25 15:51:32 by noaddino          #+#    #+#             */
+/*   Updated: 2025/02/25 15:53:38 by noaddino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "bsq.h"
 
 int	is_printable(char c)
@@ -11,8 +23,10 @@ int	is_printable(char c)
 
 void	ft_putstr(char *str)
 {
-	unsigned int i;
+	unsigned int	i;
 
+	if (!str)
+		return ;
 	i = 0;
 	while (str[i])
 		i++;
@@ -41,4 +55,3 @@ void	ft_putnbr(int nb)
 		write(1, &c, 1);
 	}
 }
-

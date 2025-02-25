@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_join.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: noaddino <noaddino@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/25 15:54:03 by noaddino          #+#    #+#             */
+/*   Updated: 2025/02/25 15:54:04 by noaddino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "bsq.h"
 
 int	ft_strslen(int count, char **strs)
@@ -33,6 +45,18 @@ char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
+void	ft_fill_memory(char *memory, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		memory[i] = 0;
+		i++;
+	}
+}
+
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*str;
@@ -40,9 +64,14 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		i;
 
 	if (!size)
-		return ((char *)malloc(sizeof(char) * 0));
-	total_strs_len = ft_strslen(size, strs) + (size * ft_strlen(sep));
-	str = (char*)malloc(sizeof(char) * total_strs_len);
+	{
+		str = (char *)malloc(sizeof(char) * 1);
+		str[0] = '\0';
+		return (str);
+	}
+	total_strs_len = ft_strslen(size, strs) + ((size - 1) * ft_strlen(sep));
+	str = (char *)malloc(sizeof(char) * total_strs_len + 1);
+	ft_fill_memory(str, total_strs_len + 1);
 	i = 0;
 	while (i < size)
 	{
